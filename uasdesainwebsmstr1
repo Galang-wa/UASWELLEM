@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Coffee Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .judul {
+            text-shadow: 2px 2px 10px #000;
+            font-weight: bold;
+        }
+        .konten {
+            text-align: justify;
+        }
+        .tombol {
+            position: relative;
+            margin-bottom: 20px;
+            top: 10%;
+        }
+        .bingkai {
+            border-radius: 30px 0px;
+        }
+        .produk {
+            margin: 30px 0px;
+        }
+        .produkitem {
+            height: 200px;
+            text-align: center;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 16px;
+        }
+        .produk {
+    clear: both; 
+        }
+
+        .pagination {
+        display: flex;
+          justify-content: right; 
+    margin-top: 780px; 
+}
+    </style>
+  </head>
+  <body>
+
+    <!-- Header Section -->
+    <body>
+        <!-- Bagian Navbar (Navigasi) -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+               <a class="navbar-brand" href="#">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2FvNLApH7q8V5AqBERfDqbsuLL78R3Is4rw&s" alt="Logo" class="logo">
+    </a>
+    
+    <style>
+        .logo {
+            width: 100px; 
+            height: 100px; 
+        }
+    </style>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#produk">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kontak">Kontak</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about-us">Tentang Kami</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <style>
+            .nav-link {
+                transition: background-color 0.3s, color 0.3s;
+            }
+        
+            .nav-link:hover {
+                background-color: #f8f9fa; 
+                color: #007bff; 
+            }
+        
+            .nav-link.active {
+                background-color: #007bff; 
+                color: white; 
+            }
+        </style>
+        
+        <script>
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-link').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        </script>
+        
+        <header class="bg-dark text-white text-center py-5" id="about-us">
+            <h1>Hi,Selamat Datang di Toko Mie instant</h1>
+        </header>
+        <div class="container my-4">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Cari produk...">
+              </div>
+              <div class="col-md-6">
+                <select id="categoryFilter" class="form-select">
+                  <option value="">Semua Kategori</option>
+                  <option value="indomie">Indomie Mie Goreng Rasa Ayam Panggang Jumbo</option>
+                  <option value="indomie">Indomie Kuah Ayam Spesial 68g</option>
+                  <option value="indomie">indomie Goreng Ayam Geprek</option>
+                  <option value="sukses">Mie Sukses Rasa Ayam Geprek</option>
+                  <option value="Sedap">Mie Goreng Sedap Korea Spicy Chiken</option>
+                  <option value="Sedaap">Sedaap Mie Instant Goreng Ayam Krispi 88G</option>
+                  <option value="Sedap">Mie Sedap Tasty Bakmie Geprek Matah Mie Instant</option>
+                  <option value="sukses">Sukses Mie GRG ISI 2 AYAM GEPREK</option>
+                </select>
+              </div>
+            </div>
+          </div>
+    
+<div class="container">
+    <div class="produk">
+        <a name="produk"></a>
+        <h3>Daftar Produk</h3>
+        <div class="listproduk"></div>
+        
+        
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+   
+    <div class="container">
+        <h3>Berikan saya ulasan:)</h3>
+        <div class="alert alert-success" role="alert" id="infSukses" style="display: none;">Testimoni berhasil ditambahkan!</div>
+        <div class="alert alert-danger" role="alert" id="infError" style="display: none;">Gagal menambahkan testimoni!</div>
+        <form id="frmTesti">
+            <input type="hidden" name="ACT" value="stored">
+            <input type="hidden" name="NIM" value="2401010567">
+
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="NAMA" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="EMAIL" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label>Pesan dan Kesan</label>
+                <textarea name="TESTI" class="form-control" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="cmdTulis" class="btn btn-primary">Tambah Data</button>
+            </div>
+        </form>
+    </div>
+
+    
+    <div class="container">
+        <h3>Ini beberapa ulasan dari pelanggan setiaa:)</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Pesan</th>
+                    <th>IP</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+   
+    <div class="container">
+        <footer class="tx-muted" style="clear: both;">
+            <hr>
+            <p class="float-right"><a href="#">Kembali ke atas</a></p>
+            <p class="copyright" id="kp">Copyright 2024 &copy; Toko mie instant</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            const urlAPI = "https://apimhstiki.ptov.my.id/";
+            const NIM = "2401010567";
+            const SS = `${urlAPI}slideshow/${NIM}`;
+            const LP = `${urlAPI}${NIM}/produk/list`;
+            const urlTestiRead = `${urlAPI}testi-${NIM}/read`;
+            const urlTestiDel = `${urlAPI}testi`;
+
+           
+            $.ajax({
+                url: SS,
+                method: 'GET',
+                dataType: 'json',
+                success: function(dta) {
+                    if (dta.error == 0) {
+                        $("#judul").html(dta.judul);
+                        $(".konten").html(dta.deskripsi);
+                        $("#kp").html(`Copyright 2024 &copy; ${dta.kls} by ${dta.nama}`);
+
+                        let txSlide = "";
+                        dta.images.forEach((gb, idx) => {
+                            const txAktif = idx === 0 ? "active" : "";
+                            txSlide += `<div class="carousel-item ${txAktif}">
+                                <img src="${gb.url}" class="d-block w-100" alt="${gb.alt}">
+                            </div>`;
+                        });
+                        $("#slider").html(txSlide);
+                    }
+                }
+            });
+
+            
+            $.ajax({
+                url: LP,
+                method: 'GET',
+                dataType: 'json',
+                success: function(lsproduk) {
+                    if (lsproduk && lsproduk.error == 0) {
+                        let txProduk = "";
+                        lsproduk.produk.forEach(function(lsdta) {
+                            txProduk += `<div class="card" style="width: 15.5rem; float: left; margin: 15px;">
+                                <img src="${lsdta.IMG}" class="card-img-top produkitem" alt="${lsdta.ITEM}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${lsdta.ITEM}</h5>
+                                    <p class="card-text">Rp. ${lsdta.HRGJUAL} ,-</p>
+                                    <a href="#" class="btn btn-primary">Beli</a>
+                                    <a href="#" class="btn btn-warning">Detail</a>
+                                </div>
+                            </div>`;
+                        });
+                        $(".listproduk").html(txProduk);
+                    }
+                }
+            });
+
+            
+            $("#frmTesti").on("submit", function(ev) {
+                ev.preventDefault();
+                const nForm = $(this).serialize();
+                $.ajax({
+                    url: `${urlAPI}testi`,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: nForm,
+                    success: function(dta) {
+                        if (dta.error == 0) {
+                            $("#infSukses").show().html("Penambahan data Testimoni sukses");
+                        } else {
+                            $("#infError").show().html(`Terjadi kendala di server (${dta.deskripsi})`);
+                        }
+                        setTimeout(() => location.reload(), 3000);
+                    },
+                    error: function() {
+                        $("#infError").show().html("Gagal menyimpan Testimoni");
+                        setTimeout(() => location.reload(), 3000);
+                    }
+                });
+            });
+
+          
+            $.ajax({
+                url: urlTestiRead,
+                method: 'GET',
+                dataType: 'json',
+                success: function(dta) {
+                    let tbl = "";
+                    if (dta && (dta.error == 4 || dta.error == 0)) {
+                        dta.TESTI.forEach(function(isi) {
+                            const cmdhapus = dta.error == 0 ? `<a onclick="hapus('${isi.IDX}')" class="btn btn-danger btn-sm">Hapus</a>` : "";
+                            tbl += `<tr>
+                                <td><img src="${isi.GRAVATAR}" width="75"> ${isi.NAMA}</td>
+                                <td>${isi.EMAIL}</td>
+                                <td>${isi.TESTI}</td>
+                                <td>${isi.IPX || "-"}</td>
+                                <td>${cmdhapus}</td>
+                            </tr>`;
+                        });
+                    }
+                    $("tbody").html(tbl);
+                }
+            });
+
+            
+            window.hapus = function(id) {
+                $.ajax({
+                    url: urlTestiDel,
+                    method: 'POST',
+                    data: `ACT=destroy&NIM=${NIM}&IDX=${id}`,
+                    dataType: 'json',
+                    success: function() {
+                        $("#infSukses").show().html("Penghapusan Testimoni sukses");
+                        setTimeout(() => location.reload(), 3000);
+                    },
+                    error: function() {
+                        $("#infError").show().html("Penghapusan Testimoni Gagal");
+                        setTimeout(() => location.reload(), 3000);
+                    }
+                });
+            };
+        });
+        
+    </script>
+
+  </body>
+</html>
